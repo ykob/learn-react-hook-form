@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { Controller, useForm, SubmitHandler } from 'react-hook-form'
 import { InputField, ButtonFilled } from '../../components/ui-parts'
 
 type Inputs = {
@@ -8,10 +8,10 @@ type Inputs = {
 
 export const PageHome = function () {
   const {
-    register,
+    control,
+    formState: { errors },
     handleSubmit,
     watch,
-    formState: { errors },
   } = useForm<Inputs>()
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
@@ -20,12 +20,18 @@ export const PageHome = function () {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <InputField placeholder="example" {...register('example')} />
+        <Controller
+          name="example"
+          control={control}
+          render={({ field }) => <InputField placeholder="example" {...field} />}
+        />
       </div>
       <div>
-        <InputField
-          placeholder="example required"
-          {...register('exampleRequired', { required: true })}
+        <Controller
+          name="exampleRequired"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => <InputField placeholder="example required" {...field} />}
         />
       </div>
       {errors.exampleRequired && <span>This field is required</span>}
