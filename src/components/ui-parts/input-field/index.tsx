@@ -4,5 +4,5 @@ export const InputField = function ({
   type = 'text',
   ...props
 }: InputHTMLAttributes<HTMLInputElement>) {
-  return <input type={type} {...props} />
+  return <input className="border border-black rounded" type={type} {...props} />
 }
