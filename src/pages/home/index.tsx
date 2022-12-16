@@ -12,7 +12,9 @@ export const PageHome = function () {
     formState: { errors },
     handleSubmit,
     watch,
-  } = useForm<Inputs>()
+  } = useForm<Inputs>({
+    defaultValues: { example: '', exampleRequired: '' },
+  })
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
   console.log(watch('example'))
@@ -23,7 +25,9 @@ export const PageHome = function () {
         <Controller
           name="example"
           control={control}
-          render={({ field }) => <InputField placeholder="example" {...field} />}
+          render={({ field }) => (
+            <InputField placeholder="example" {...field} />
+          )}
         />
       </div>
       <div>
@@ -31,7 +35,9 @@ export const PageHome = function () {
           name="exampleRequired"
           control={control}
           rules={{ required: true }}
-          render={({ field }) => <InputField placeholder="example required" {...field} />}
+          render={({ field }) => (
+            <InputField placeholder="example required" {...field} />
+          )}
         />
       </div>
       {errors.exampleRequired && <span>This field is required</span>}
