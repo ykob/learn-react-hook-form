@@ -1,12 +1,15 @@
-import { TextareaHTMLAttributes } from 'react'
+import { forwardRef, TextareaHTMLAttributes } from 'react'
 
-export const InputFieldMulti = function ({
-  children,
-  ...props
-}: TextareaHTMLAttributes<HTMLTextAreaElement>) {
+export const InputFieldMulti = forwardRef<
+  HTMLTextAreaElement,
+  TextareaHTMLAttributes<HTMLTextAreaElement>
+>(function (
+  { children, ...props }: TextareaHTMLAttributes<HTMLTextAreaElement>,
+  ref
+) {
   return (
-    <textarea className="p-2 border border-black rounded" {...props}>
+    <textarea className="p-2 border border-black rounded" ref={ref} {...props}>
       {children}
     </textarea>
   )
-}
+})
