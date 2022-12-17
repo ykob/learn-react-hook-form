@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react'
 import { Controller, useForm, SubmitHandler } from 'react-hook-form'
 import { InputField, ButtonFilled } from '../../components/ui-parts'
 
@@ -11,10 +12,15 @@ export const PageHome = function () {
     control,
     formState: { errors },
     handleSubmit,
+    reset,
     watch,
   } = useForm<Inputs>({
     defaultValues: { example: '', exampleRequired: '' },
   })
+
+  const onReset: MouseEventHandler<HTMLButtonElement> = () => {
+    reset()
+  }
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
   console.log(watch('example'))
@@ -41,7 +47,10 @@ export const PageHome = function () {
         />
       </div>
       {errors.exampleRequired && <span>This field is required</span>}
-      <div>
+      <div className="flex gap-4">
+        <ButtonFilled type="button" onClick={onReset}>
+          Reset
+        </ButtonFilled>
         <ButtonFilled>Submit</ButtonFilled>
       </div>
     </form>
