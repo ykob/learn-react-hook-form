@@ -1,11 +1,17 @@
 import { MouseEventHandler } from 'react'
 import { Controller, useForm, SubmitHandler } from 'react-hook-form'
+import * as z from 'zod'
 import { InputField, ButtonFilled } from '../../components/ui-parts'
 
 type Inputs = {
-  example: string
-  exampleRequired: string
+  sampleText: string
+  sampleNumber: number
 }
+
+const schema = z.object({
+  sampleText: z.string().min(1, { message: 'Required' }),
+  sampleNumber: z.number().min(10),
+})
 
 export const PageHome = function () {
   const {
@@ -14,7 +20,7 @@ export const PageHome = function () {
     handleSubmit,
     reset,
   } = useForm<Inputs>({
-    defaultValues: { example: '', exampleRequired: '' },
+    defaultValues: { sampleText: '', sampleNumber: 0 },
   })
 
   const onReset: MouseEventHandler<HTMLButtonElement> = () => {
@@ -26,16 +32,16 @@ export const PageHome = function () {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <Controller
-          name="example"
+          name="sampleText"
           control={control}
           render={({ field }) => (
-            <InputField placeholder="example" {...field} />
+            <InputField placeholder="sampleText" {...field} />
           )}
         />
       </div>
       <div>
         <Controller
-          name="exampleRequired"
+          name="sampleNumber"
           control={control}
           rules={{ required: true }}
           render={({ field }) => (
@@ -43,7 +49,6 @@ export const PageHome = function () {
           )}
         />
       </div>
-      {errors.exampleRequired && <span>This field is required</span>}
       <div className="flex gap-4">
         <ButtonFilled type="button" onClick={onReset}>
           Reset
