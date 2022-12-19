@@ -13,7 +13,6 @@ export const PageHome = function () {
     formState: { errors },
     handleSubmit,
     reset,
-    watch,
   } = useForm<Inputs>({
     defaultValues: { example: '', exampleRequired: '' },
   })
@@ -22,8 +21,6 @@ export const PageHome = function () {
     reset()
   }
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
-
-  console.log(watch('example'))
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
