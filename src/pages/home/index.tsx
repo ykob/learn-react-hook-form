@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { MouseEventHandler } from 'react'
 import { Controller, useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
-import { InputField, ButtonFilled } from '../../components/ui-parts'
+import { ButtonFilled, ErrorText, InputField } from '../../components/ui-parts'
 
 type Inputs = {
   sampleText: string
@@ -44,7 +44,7 @@ export const PageHome = function () {
           )}
         />
         {errors.sampleText?.message && (
-          <div className="text-red-500">{errors.sampleText?.message}</div>
+          <ErrorText>{errors.sampleText?.message}</ErrorText>
         )}
       </div>
       <div>
@@ -61,7 +61,7 @@ export const PageHome = function () {
           )}
         />
         {errors.sampleNumber?.message && (
-          <div className="text-red-500">{errors.sampleNumber?.message}</div>
+          <ErrorText>{errors.sampleNumber?.message}</ErrorText>
         )}
       </div>
       <div className="flex gap-4">
