@@ -34,7 +34,7 @@ export const PageHome = function () {
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
       <div>
         <Controller
           name="sampleText"
