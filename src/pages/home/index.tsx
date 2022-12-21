@@ -43,7 +43,9 @@ export const PageHome = function () {
             <InputField placeholder="sample text" {...field} />
           )}
         />
-        {errors.sampleText?.message && <p>{errors.sampleText?.message}</p>}
+        {errors.sampleText?.message && (
+          <div className="text-red-500">{errors.sampleText?.message}</div>
+        )}
       </div>
       <div>
         <Controller
@@ -58,7 +60,9 @@ export const PageHome = function () {
             />
           )}
         />
-        {errors.sampleNumber?.message && <p>{errors.sampleNumber?.message}</p>}
+        {errors.sampleNumber?.message && (
+          <div className="text-red-500">{errors.sampleNumber?.message}</div>
+        )}
       </div>
       <div className="flex gap-4">
         <ButtonFilled type="button" onClick={onReset}>
