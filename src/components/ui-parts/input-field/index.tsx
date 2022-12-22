@@ -7,9 +7,11 @@ export const InputField = forwardRef<
   { type = 'text', ...props }: InputHTMLAttributes<HTMLInputElement>,
   ref
 ) {
+  const classNameBase = 'px-2 h-8 border border-black rounded'
+
   return (
     <input
-      className="px-2 h-8 border border-black rounded"
+      className={[props.className, classNameBase].join(' ')}
       ref={ref}
       type={type}
       {...props}
