@@ -4,8 +4,10 @@ export const ErrorText = function ({
   children,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
+  const classNameBase = 'text-red-500'
+
   return (
-    <div className="text-red-500" {...props}>
+    <div className={[props.className, classNameBase].join(' ')} {...props}>
       {children}
     </div>
   )
