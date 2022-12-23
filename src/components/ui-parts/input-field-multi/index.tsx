@@ -7,8 +7,14 @@ export const InputFieldMulti = forwardRef<
   { children, ...props }: TextareaHTMLAttributes<HTMLTextAreaElement>,
   ref
 ) {
+  const classNameBase = 'p-2 border border-black rounded'
+
   return (
-    <textarea className="p-2 border border-black rounded" ref={ref} {...props}>
+    <textarea
+      className={[props.className, classNameBase].join(' ')}
+      ref={ref}
+      {...props}
+    >
       {children}
     </textarea>
   )
