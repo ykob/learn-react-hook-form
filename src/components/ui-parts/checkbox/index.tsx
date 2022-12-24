@@ -9,7 +9,7 @@ interface Props {
 
 export const Checkbox = function (props: Props) {
   return (
-    <label className='inline-flex items-center gap-2' htmlFor={props.id}>
+    <label className="inline-flex items-center gap-2" htmlFor={props.id}>
       <input
         checked={props.checked}
         id={props.id}
