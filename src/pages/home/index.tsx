@@ -71,18 +71,18 @@ export const PageHome = function () {
         )}
       </div>
       <div className="flex gap-4">
-        <Checkbox id="check1" name="check">
+        <Checkbox id="check1" name="check" value="1">
           Check 1
         </Checkbox>
-        <Checkbox id="check2" name="check">
+        <Checkbox id="check2" name="check" value="2">
           Check 2
         </Checkbox>
       </div>
       <div className="flex gap-4">
-        <RadioButton id="radio1" name="radio">
+        <RadioButton id="radio1" name="radio" value="1">
           Radio 1
         </RadioButton>
-        <RadioButton id="radio2" name="radio">
+        <RadioButton id="radio2" name="radio" value="2">
           Radio 2
         </RadioButton>
       </div>

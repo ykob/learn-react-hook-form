@@ -5,6 +5,7 @@ interface Props {
   children: ReactNode
   id: string
   name: string
+  value: string
 }
 
 export const Checkbox = function (props: Props) {
@@ -15,6 +16,7 @@ export const Checkbox = function (props: Props) {
         id={props.id}
         name={props.name}
         type="checkbox"
+        value={props.value}
       />
       {props.children}
     </label>

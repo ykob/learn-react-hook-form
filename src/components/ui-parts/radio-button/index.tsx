@@ -5,6 +5,7 @@ interface Props {
   children: ReactNode
   id: string
   name: string
+  value: string
 }
 
 export const RadioButton = function (props: Props) {
@@ -15,6 +16,7 @@ export const RadioButton = function (props: Props) {
         id={props.id}
         name={props.name}
         type="radio"
+        value={props.value}
       />
       {props.children}
     </label>
