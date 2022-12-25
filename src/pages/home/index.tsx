@@ -7,6 +7,7 @@ import {
   Checkbox,
   ErrorText,
   InputField,
+  RadioButton,
 } from '../../components/ui-parts'
 
 type Inputs = {
@@ -76,6 +77,14 @@ export const PageHome = function () {
         <Checkbox id="check2" name="check">
           Check 2
         </Checkbox>
+      </div>
+      <div className="flex gap-4">
+        <RadioButton id="radio1" name="radio">
+          Radio 1
+        </RadioButton>
+        <RadioButton id="radio2" name="radio">
+          Radio 2
+        </RadioButton>
       </div>
       <div className="flex gap-4">
         <ButtonFilled type="button" onClick={onReset}>
