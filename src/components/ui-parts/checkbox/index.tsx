@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
+import { forwardRef, ReactNode } from 'react'
 
 interface Props {
   checked?: boolean
