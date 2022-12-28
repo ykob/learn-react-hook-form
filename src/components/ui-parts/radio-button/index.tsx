@@ -2,7 +2,7 @@ import { forwardRef, ReactNode } from 'react'
 
 interface Props {
   checked?: boolean
-  children: ReactNode
+  children?: ReactNode
   id: string
   name: string
   value: string
