@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { MouseEventHandler } from 'react'
 import { Controller, useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
+import { CheckboxController } from '../../components/features'
 import {
   ButtonFilled,
   Checkbox,
@@ -13,6 +14,7 @@ import {
 type Inputs = {
   sampleText: string
   sampleNumber: number
+  sampleTextArray: string[]
 }
 
 const schema = z.object({
@@ -21,7 +23,21 @@ const schema = z.object({
     .number()
     .min(1, { message: 'Input a number greater than equal to 1.' })
     .max(10, { message: 'Input a number less than equal to 10.' }),
+  sampleTextArray: z.string().array(),
 })
+
+const checkItems = [
+  {
+    id: 'check-item-001',
+    label: 'Check 1',
+    value: '1',
+  },
+  {
+    id: 'check-item-002',
+    label: 'Check 2',
+    value: '2',
+  },
+]
 
 export const PageHome = function () {
   const {
@@ -30,7 +46,7 @@ export const PageHome = function () {
     handleSubmit,
     reset,
   } = useForm<Inputs>({
-    defaultValues: { sampleText: '', sampleNumber: 1 },
+    defaultValues: { sampleText: '', sampleNumber: 1, sampleTextArray: ['1'] },
     resolver: zodResolver(schema),
   })
 
@@ -71,12 +87,11 @@ export const PageHome = function () {
         )}
       </div>
       <div className="flex gap-4">
-        <Checkbox id="check1" name="check" value="1">
-          Check 1
-        </Checkbox>
-        <Checkbox id="check2" name="check" value="2">
-          Check 2
-        </Checkbox>
+        <CheckboxController
+          control={control}
+          items={checkItems}
+          name="sampleTextArray"
+        />
       </div>
       <div className="flex gap-4">
         <RadioButton id="radio1" name="radio" value="1">
