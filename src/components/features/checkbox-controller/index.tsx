@@ -6,9 +6,8 @@ type Item = {
   label: string
   value: string
 }
-
 type Props = {
-  control: Control
+  control: Control<any>
   items: Item[]
   name: string
 }
