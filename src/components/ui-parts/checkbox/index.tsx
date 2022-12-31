@@ -1,17 +1,18 @@
-import { forwardRef, ReactNode } from 'react'
+import { ChangeEventHandler, forwardRef, ReactNode } from 'react'
 
 interface Props {
   checked?: boolean
   children?: ReactNode
-  id: string
+  id?: string
   name: string
   value: string
+  onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
-export const Checkbox = forwardRef<
-  HTMLInputElement,
-  Props
->(function (props, ref) {
+export const Checkbox = forwardRef<HTMLInputElement, Props>(function (
+  props,
+  ref
+) {
   return (
     <label className="inline-flex items-center gap-2" htmlFor={props.id}>
       <input
@@ -21,6 +22,7 @@ export const Checkbox = forwardRef<
         ref={ref}
         type="checkbox"
         value={props.value}
+        onChange={props.onChange}
       />
       {props.children}
     </label>
