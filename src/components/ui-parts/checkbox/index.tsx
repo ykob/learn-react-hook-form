@@ -1,12 +1,18 @@
-import { ChangeEventHandler, forwardRef, ReactNode } from 'react'
+import {
+  ChangeEventHandler,
+  FocusEventHandler,
+  forwardRef,
+  ReactNode,
+} from 'react'
 
-interface Props {
+type Props = {
   checked?: boolean
   children?: ReactNode
   id?: string
   name: string
   value: string
   onChange?: ChangeEventHandler<HTMLInputElement>
+  onBlur?: FocusEventHandler<HTMLInputElement>
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, Props>(function (
@@ -23,6 +29,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(function (
         type="checkbox"
         value={props.value}
         onChange={props.onChange}
+        onBlur={props.onBlur}
       />
       {props.children}
     </label>
