@@ -73,9 +73,11 @@ export const PageHome = function () {
           control={control}
           render={({ field }) => (
             <InputField
+              name={field.name}
               placeholder="sample number"
+              ref={field.ref}
               type="number"
-              {...field}
+              onBlur={field.onBlur}
               onChange={(e) => field.onChange(parseInt(e.target.value))}
             />
           )}
