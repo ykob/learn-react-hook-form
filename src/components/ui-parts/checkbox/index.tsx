@@ -11,8 +11,8 @@ type Props = {
   id?: string
   name: string
   value: string
-  onChange?: ChangeEventHandler<HTMLInputElement>
   onBlur?: FocusEventHandler<HTMLInputElement>
+  onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, Props>(function (
@@ -28,9 +28,9 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(function (
         ref={ref}
         type="checkbox"
         value={props.value}
-        onChange={props.onChange}
         onBlur={props.onBlur}
-      />
+        onChange={props.onChange}
+        />
       {props.children}
     </label>
   )
