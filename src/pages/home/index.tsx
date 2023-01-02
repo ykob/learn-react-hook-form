@@ -14,6 +14,7 @@ type Inputs = {
   sampleText: string
   sampleNumber: number
   sampleTextArray: string[]
+  sampleTextRadio: string
 }
 
 const schema = z.object({
@@ -23,6 +24,7 @@ const schema = z.object({
     .min(1, { message: 'Input a number greater than equal to 1.' })
     .max(10, { message: 'Input a number less than equal to 10.' }),
   sampleTextArray: z.string().array(),
+  sampleTextRadio: z.string(),
 })
 
 const checkItems = [
@@ -49,7 +51,8 @@ export const PageHome = function () {
     defaultValues: {
       sampleText: '',
       sampleNumber: 1,
-      sampleTextArray: [],
+      sampleTextArray: ['1'],
+      sampleTextRadio: 'radio 1',
     },
     resolver: zodResolver(schema),
   })
@@ -103,10 +106,10 @@ export const PageHome = function () {
         </Checkbox>
       </div>
       <div className="flex gap-4">
-        <RadioButton id="radio1" name="radio" value="1">
+        <RadioButton id="radio1" value="radio 1" {...register('sampleTextRadio')}>
           Radio 1
         </RadioButton>
-        <RadioButton id="radio2" name="radio" value="2">
+        <RadioButton id="radio2" value="radio 2" {...register('sampleTextRadio')}>
           Radio 2
         </RadioButton>
       </div>
