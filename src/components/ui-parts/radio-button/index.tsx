@@ -1,17 +1,24 @@
-import { forwardRef, ReactNode } from 'react'
+import {
+  ChangeEventHandler,
+  FocusEventHandler,
+  forwardRef,
+  ReactNode,
+} from 'react'
 
-interface Props {
+type Props = {
   checked?: boolean
   children?: ReactNode
-  id: string
+  id?: string
   name: string
   value: string
+  onBlur?: FocusEventHandler<HTMLInputElement>
+  onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
-export const RadioButton = forwardRef<
-  HTMLInputElement,
-  Props
->(function (props, ref) {
+export const RadioButton = forwardRef<HTMLInputElement, Props>(function (
+  props,
+  ref
+) {
   return (
     <label className="inline-flex items-center gap-2" htmlFor={props.id}>
       <input
@@ -21,6 +28,8 @@ export const RadioButton = forwardRef<
         ref={ref}
         type="radio"
         value={props.value}
+        onBlur={props.onBlur}
+        onChange={props.onChange}
       />
       {props.children}
     </label>
