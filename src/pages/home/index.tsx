@@ -71,19 +71,12 @@ export const PageHome = function () {
         )}
       </div>
       <div>
-        <Controller
-          name="sampleNumber"
-          control={control}
-          render={({ field }) => (
-            <InputField
-              name={field.name}
-              placeholder="sample number"
-              ref={field.ref}
-              type="number"
-              onBlur={field.onBlur}
-              onChange={(e) => field.onChange(parseInt(e.target.value))}
-            />
-          )}
+        <InputField
+          placeholder="sample number"
+          type="number"
+          {...register('sampleNumber', {
+            setValueAs: v => parseInt(v),
+          })}
         />
         {errors.sampleNumber?.message && (
           <ErrorText>{errors.sampleNumber?.message}</ErrorText>
