@@ -106,10 +106,18 @@ export const PageHome = function () {
         </Checkbox>
       </div>
       <div className="flex gap-4">
-        <RadioButton id="radio1" value="radio 1" {...register('sampleTextRadio')}>
+        <RadioButton
+          id="radio1"
+          value="radio 1"
+          {...register('sampleTextRadio')}
+        >
           Radio 1
         </RadioButton>
-        <RadioButton id="radio2" value="radio 2" {...register('sampleTextRadio')}>
+        <RadioButton
+          id="radio2"
+          value="radio 2"
+          {...register('sampleTextRadio')}
+        >
           Radio 2
         </RadioButton>
       </div>
