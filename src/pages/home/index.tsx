@@ -27,19 +27,6 @@ const schema = z.object({
   sampleTextRadio: z.string(),
 })
 
-const checkItems = [
-  {
-    id: 'check-item-001',
-    label: 'Check 1',
-    value: '1',
-  },
-  {
-    id: 'check-item-002',
-    label: 'Check 2',
-    value: '2',
-  },
-]
-
 export const PageHome = function () {
   const {
     control,
@@ -51,7 +38,7 @@ export const PageHome = function () {
     defaultValues: {
       sampleText: '',
       sampleNumber: 1,
-      sampleTextArray: ['1'],
+      sampleTextArray: ['Check 1'],
       sampleTextRadio: 'radio 1',
     },
     resolver: zodResolver(schema),
@@ -61,6 +48,32 @@ export const PageHome = function () {
     reset()
   }
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+
+  const CheckItems = function () {
+    const data = [
+      {
+        id: 'check-item-001',
+        label: 'Check 1',
+        value: 'Check 1',
+      },
+      {
+        id: 'check-item-002',
+        label: 'Check 2',
+        value: 'Check 2',
+      },
+    ]
+    const items = data.map((o) => (
+      <Checkbox
+        id={o.id}
+        key={o.id}
+        value={o.value}
+        {...register('sampleTextArray')}
+      >
+        {o.label}
+      </Checkbox>
+    ))
+    return <>{items}</>
+  }
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
@@ -75,29 +88,14 @@ export const PageHome = function () {
           placeholder="sample number"
           type="number"
           {...register('sampleNumber', {
-            setValueAs: v => parseInt(v),
+            setValueAs: (v) => parseInt(v),
           })}
         />
         {errors.sampleNumber?.message && (
           <ErrorText>{errors.sampleNumber?.message}</ErrorText>
         )}
       </div>
-      <div className="flex gap-4">
-        <Checkbox
-          id="sampleTextArray-1"
-          value="1"
-          {...register('sampleTextArray')}
-        >
-          Check 1
-        </Checkbox>
-        <Checkbox
-          id="sampleTextArray-2"
-          value="2"
-          {...register('sampleTextArray')}
-        >
-          Check 2
-        </Checkbox>
-      </div>
+      <div className="flex gap-4">{CheckItems()}</div>
       <div className="flex gap-4">
         <RadioButton
           id="radio1"
