@@ -29,7 +29,6 @@ const schema = z.object({
 
 export const PageHome = function () {
   const {
-    control,
     formState: { errors },
     handleSubmit,
     register,
