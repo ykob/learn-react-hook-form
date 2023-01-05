@@ -39,7 +39,7 @@ export const PageHome = function () {
       sampleText: '',
       sampleNumber: 1,
       sampleTextArray: ['Check 1'],
-      sampleTextRadio: 'radio 1',
+      sampleTextRadio: 'Radio 1',
     },
     resolver: zodResolver(schema),
   })
@@ -75,6 +75,32 @@ export const PageHome = function () {
     return <>{items}</>
   }
 
+  const RadioItems = function () {
+    const data = [
+      {
+        id: 'radio-item-001',
+        label: 'Radio 1',
+        value: 'Radio 1',
+      },
+      {
+        id: 'radio-item-002',
+        label: 'Radio 2',
+        value: 'Radio 2',
+      },
+    ]
+    const items = data.map((o) => (
+      <RadioButton
+        id={o.id}
+        key={o.id}
+        value={o.value}
+        {...register('sampleTextRadio')}
+      >
+        {o.label}
+      </RadioButton>
+    ))
+    return <>{items}</>
+  }
+
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
       <div>
@@ -96,22 +122,7 @@ export const PageHome = function () {
         )}
       </div>
       <div className="flex gap-4">{CheckItems()}</div>
-      <div className="flex gap-4">
-        <RadioButton
-          id="radio1"
-          value="radio 1"
-          {...register('sampleTextRadio')}
-        >
-          Radio 1
-        </RadioButton>
-        <RadioButton
-          id="radio2"
-          value="radio 2"
-          {...register('sampleTextRadio')}
-        >
-          Radio 2
-        </RadioButton>
-      </div>
+      <div className="flex gap-4">{RadioItems()}</div>
       <div className="flex gap-4">
         <ButtonFilled type="button" onClick={onReset}>
           Reset
