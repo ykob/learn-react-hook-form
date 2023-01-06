@@ -2,15 +2,15 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { MouseEventHandler } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
+import { CheckItems } from '../../components/page/home/'
 import {
   ButtonFilled,
-  Checkbox,
   ErrorText,
   InputField,
   RadioButton,
 } from '../../components/ui-parts'
 
-type Inputs = {
+export type Inputs = {
   sampleText: string
   sampleNumber: number
   sampleTextArray: string[]
@@ -47,32 +47,6 @@ export const PageHome = function () {
     reset()
   }
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
-
-  const CheckItems = function () {
-    const data = [
-      {
-        id: 'check-item-001',
-        label: 'Check 1',
-        value: 'Check 1',
-      },
-      {
-        id: 'check-item-002',
-        label: 'Check 2',
-        value: 'Check 2',
-      },
-    ]
-    const items = data.map((o) => (
-      <Checkbox
-        id={o.id}
-        key={o.id}
-        value={o.value}
-        {...register('sampleTextArray')}
-      >
-        {o.label}
-      </Checkbox>
-    ))
-    return <>{items}</>
-  }
 
   const RadioItems = function () {
     const data = [
@@ -120,7 +94,9 @@ export const PageHome = function () {
           <ErrorText>{errors.sampleNumber?.message}</ErrorText>
         )}
       </div>
-      <div className="flex gap-4">{CheckItems()}</div>
+      <div className="flex gap-4">
+        <CheckItems register={register} />
+      </div>
       <div className="flex gap-4">{RadioItems()}</div>
       <div className="flex gap-4">
         <ButtonFilled type="button" onClick={onReset}>
