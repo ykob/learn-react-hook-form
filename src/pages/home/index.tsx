@@ -2,13 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { MouseEventHandler } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
-import { CheckItems } from '../../components/page/home/'
-import {
-  ButtonFilled,
-  ErrorText,
-  InputField,
-  RadioButton,
-} from '../../components/ui-parts'
+import { CheckItems, RadioItems } from '../../components/page/home/'
+import { ButtonFilled, ErrorText, InputField } from '../../components/ui-parts'
 
 export type Inputs = {
   sampleText: string
@@ -48,32 +43,6 @@ export const PageHome = function () {
   }
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
-  const RadioItems = function () {
-    const data = [
-      {
-        id: 'radio-item-001',
-        label: 'Radio 1',
-        value: 'Radio 1',
-      },
-      {
-        id: 'radio-item-002',
-        label: 'Radio 2',
-        value: 'Radio 2',
-      },
-    ]
-    const items = data.map((o) => (
-      <RadioButton
-        id={o.id}
-        key={o.id}
-        value={o.value}
-        {...register('sampleTextRadio')}
-      >
-        {o.label}
-      </RadioButton>
-    ))
-    return <>{items}</>
-  }
-
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
       <div>
@@ -97,7 +66,9 @@ export const PageHome = function () {
       <div className="flex gap-4">
         <CheckItems register={register} />
       </div>
-      <div className="flex gap-4">{RadioItems()}</div>
+      <div className="flex gap-4">
+        <RadioItems register={register} />
+      </div>
       <div className="flex gap-4">
         <ButtonFilled type="button" onClick={onReset}>
           Reset
