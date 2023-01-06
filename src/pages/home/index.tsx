@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { MouseEventHandler } from 'react'
-import { Controller, useForm, SubmitHandler } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
 import {
   ButtonFilled,
