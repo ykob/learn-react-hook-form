@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { MouseEventHandler } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
-import { CheckItems, RadioItems } from '../../components/page/home/'
+import { CheckItems, RadioItems } from './components/'
 import { ButtonFilled, ErrorText, InputField } from '../../components/ui-parts'
 
 export type Inputs = {

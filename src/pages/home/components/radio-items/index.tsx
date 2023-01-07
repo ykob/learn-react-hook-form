@@ -1,6 +1,6 @@
 import { UseFormRegister } from 'react-hook-form'
-import { RadioButton } from '../../../ui-parts'
-import { Inputs } from '../../../../pages/home'
+import { RadioButton } from '../../../../components/ui-parts'
+import { Inputs } from '../..'
 
 type Props = {
   register: UseFormRegister<Inputs>
