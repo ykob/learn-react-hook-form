@@ -1,12 +1,9 @@
-import { UseFormRegister } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { RadioButton } from '../../../../components/ui-parts'
 import { Inputs } from '../..'
 
-type Props = {
-  register: UseFormRegister<Inputs>
-}
-
-export const RadioItems = function (props: Props) {
+export const RadioItems = function () {
+  const { register } = useFormContext<Inputs>()
   const data = [
     {
       id: 'radio-item-001',
@@ -24,10 +21,11 @@ export const RadioItems = function (props: Props) {
       id={o.id}
       key={o.id}
       value={o.value}
-      {...props.register('sampleTextRadio')}
+      {...register('sampleTextRadio')}
     >
       {o.label}
     </RadioButton>
   ))
+
   return <>{items}</>
 }

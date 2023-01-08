@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { MouseEventHandler } from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
 import { CheckItems, RadioItems } from './components/'
 import { ButtonFilled, ErrorText, InputField } from '../../components/ui-parts'
@@ -23,12 +23,7 @@ const schema = z.object({
 })
 
 export const PageHome = function () {
-  const {
-    formState: { errors },
-    handleSubmit,
-    register,
-    reset,
-  } = useForm<Inputs>({
+  const methods = useForm<Inputs>({
     defaultValues: {
       sampleText: '',
       sampleNumber: 1,
@@ -37,44 +32,56 @@ export const PageHome = function () {
     },
     resolver: zodResolver(schema),
   })
+  const { errors } = methods.formState
 
   const onReset: MouseEventHandler<HTMLButtonElement> = () => {
-    reset()
+    methods.reset()
   }
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <InputField placeholder="sample text" {...register('sampleText')} />
-        {errors.sampleText?.message && (
-          <ErrorText>{errors.sampleText?.message}</ErrorText>
-        )}
-      </div>
-      <div>
-        <InputField
-          placeholder="sample number"
-          type="number"
-          {...register('sampleNumber', {
-            setValueAs: (v) => parseInt(v),
-          })}
-        />
-        {errors.sampleNumber?.message && (
-          <ErrorText>{errors.sampleNumber?.message}</ErrorText>
-        )}
-      </div>
-      <div className="flex gap-4">
-        <CheckItems register={register} />
-      </div>
-      <div className="flex gap-4">
-        <RadioItems register={register} />
-      </div>
-      <div className="flex gap-4">
-        <ButtonFilled type="button" onClick={onReset}>
-          Reset
-        </ButtonFilled>
-        <ButtonFilled>Submit</ButtonFilled>
-      </div>
-    </form>
+    <div className="grid grid-cols-2 gap-8">
+      <FormProvider {...methods}>
+        <form
+          className="flex flex-col gap-4"
+          onSubmit={methods.handleSubmit(onSubmit)}
+        >
+          <div>
+            <InputField
+              placeholder="sample text"
+              {...methods.register('sampleText')}
+            />
+            {errors.sampleText?.message && (
+              <ErrorText>{errors.sampleText?.message}</ErrorText>
+            )}
+          </div>
+          <div>
+            <InputField
+              placeholder="sample number"
+              type="number"
+              {...methods.register('sampleNumber', {
+                setValueAs: (v) => parseInt(v),
+              })}
+            />
+            {errors.sampleNumber?.message && (
+              <ErrorText>{errors.sampleNumber?.message}</ErrorText>
+            )}
+          </div>
+          <div className="flex gap-4">
+            <CheckItems />
+          </div>
+          <div className="flex gap-4">
+            <RadioItems />
+          </div>
+          <div className="flex gap-4">
+            <ButtonFilled type="button" onClick={onReset}>
+              Reset
+            </ButtonFilled>
+            <ButtonFilled>Submit</ButtonFilled>
+          </div>
+        </form>
+      </FormProvider>
+      <div></div>
+    </div>
   )
 }

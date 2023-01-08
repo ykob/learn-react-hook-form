@@ -1,12 +1,9 @@
-import { UseFormRegister } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { Checkbox } from '../../../../components/ui-parts'
 import { Inputs } from '../..'
 
-type Props = {
-  register: UseFormRegister<Inputs>
-}
-
-export const CheckItems = function (props: Props) {
+export const CheckItems = function () {
+  const { register } = useFormContext<Inputs>()
   const data = [
     {
       id: 'check-item-001',
@@ -24,10 +21,11 @@ export const CheckItems = function (props: Props) {
       id={o.id}
       key={o.id}
       value={o.value}
-      {...props.register('sampleTextArray')}
+      {...register('sampleTextArray')}
     >
       {o.label}
     </Checkbox>
   ))
+
   return <>{items}</>
 }
