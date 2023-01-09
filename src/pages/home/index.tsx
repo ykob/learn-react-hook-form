@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { MouseEventHandler } from 'react'
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
-import { CheckItems, RadioItems } from './components/'
+import { CheckItems, RadioItems, ViewFormState } from './components/'
 import { ButtonFilled, ErrorText, InputField } from '../../components/ui-parts'
 
 export type Inputs = {
@@ -32,7 +32,7 @@ export const PageHome = function () {
     },
     resolver: zodResolver(schema),
   })
-  const { errors, isDirty, isSubmitted, isSubmitSuccessful } = methods.formState
+  const { errors } = methods.formState
 
   const onReset: MouseEventHandler<HTMLButtonElement> = () => {
     methods.reset()
@@ -82,10 +82,7 @@ export const PageHome = function () {
         </form>
       </FormProvider>
       <div>
-        <h2 className="text-xl">formState</h2>
-        <p>isDirty: {String(isDirty)}</p>
-        <p>isSubmitted: {String(isSubmitted)}</p>
-        <p>isSubmitSuccessful: {String(isSubmitSuccessful)}</p>
+        <ViewFormState control={methods.control} />
       </div>
     </div>
   )
