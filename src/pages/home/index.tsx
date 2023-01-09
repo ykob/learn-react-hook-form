@@ -32,7 +32,7 @@ export const PageHome = function () {
     },
     resolver: zodResolver(schema),
   })
-  const { errors, isDirty } = methods.formState
+  const { errors, isDirty, isSubmitted, isSubmitSuccessful } = methods.formState
 
   const onReset: MouseEventHandler<HTMLButtonElement> = () => {
     methods.reset()
@@ -84,6 +84,8 @@ export const PageHome = function () {
       <div>
         <h2 className="text-xl">formState</h2>
         <p>isDirty: {String(isDirty)}</p>
+        <p>isSubmitted: {String(isSubmitted)}</p>
+        <p>isSubmitSuccessful: {String(isSubmitSuccessful)}</p>
       </div>
     </div>
   )
