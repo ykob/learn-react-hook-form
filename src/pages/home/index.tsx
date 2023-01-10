@@ -2,7 +2,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { MouseEventHandler } from 'react'
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
-import { CheckItems, RadioItems, ViewFormState } from './components/'
+import {
+  CheckItems,
+  ErrorMessageBlock,
+  RadioItems,
+  ViewFormState,
+} from './components/'
 import { ButtonFilled, ErrorText, InputField } from '../../components/ui-parts'
 
 export type Inputs = {
@@ -87,7 +92,8 @@ export const PageHome = function () {
           </div>
         </form>
       </FormProvider>
-      <div>
+      <div className='flex flex-col gap-4'>
+        <ErrorMessageBlock control={methods.control} />
         <ViewFormState control={methods.control} />
       </div>
     </div>
