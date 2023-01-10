@@ -69,9 +69,15 @@ export const PageHome = function () {
           </div>
           <div className="flex gap-4">
             <CheckItems />
+            {errors.sampleNumber?.message && (
+              <ErrorText>{errors.sampleTextArray?.message}</ErrorText>
+            )}
           </div>
           <div className="flex gap-4">
             <RadioItems />
+            {errors.sampleNumber?.message && (
+              <ErrorText>{errors.sampleTextRadio?.message}</ErrorText>
+            )}
           </div>
           <div className="flex gap-4">
             <ButtonFilled type="button" onClick={onReset}>
