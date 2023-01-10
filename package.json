@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^2.9.10",
     "@mdi/js": "^7.1.96",
     "@mdi/react": "^1.6.1",

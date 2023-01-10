@@ -250,6 +250,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.15.18.tgz#128b76ecb9be48b60cf5cfc1c63a4f00691a3239"
   integrity sha512-L4jVKS82XVhw2nvzLg/19ClLWg0y27ulRwuP7lcyL6AbUWB5aPglXY3M21mauDQMDfRLs8cQmeT03r/+X3cZYQ==
 
+"@hookform/error-message@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@hookform/error-message/-/error-message-2.0.1.tgz#6a37419106e13664ad6a29c9dae699ae6cd276b8"
+  integrity sha512-U410sAr92xgxT1idlu9WWOVjndxLdgPUHEB8Schr27C9eh7/xUnITWpCMF93s+lGiG++D4JnbSnrb5A21AdSNg==
+
 "@hookform/resolvers@^2.9.10":
   version "2.9.10"
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-2.9.10.tgz#e7e88942ee34e97b7bc937b0be4694194c9cd420"
