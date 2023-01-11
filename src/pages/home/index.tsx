@@ -92,7 +92,7 @@ export const PageHome = function () {
           </div>
         </form>
       </FormProvider>
-      <div className='flex flex-col gap-4'>
+      <div className='flex flex-col gap-8'>
         <ErrorMessageBlock control={methods.control} />
         <ViewFormState control={methods.control} />
       </div>
