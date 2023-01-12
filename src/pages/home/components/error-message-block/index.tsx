@@ -8,7 +8,7 @@ type Props = {
 }
 
 export const ErrorMessageBlock = function ({ control }: Props) {
-  const { errors } = useFormState({ control })
+  const { errors, isValid } = useFormState({ control })
 
   const ErrorMessages = function () {
     const items = Object.keys(errors).map((o) => (
@@ -28,7 +28,11 @@ export const ErrorMessageBlock = function ({ control }: Props) {
   return (
     <div>
       <h2 className="mb-2 text-xl">Errors</h2>
-      <ErrorMessages />
+      {isValid || Object.keys(errors).length < 1 ? (
+        <div>no errors.</div>
+      ) : (
+        <ErrorMessages />
+      )}
     </div>
   )
 }
