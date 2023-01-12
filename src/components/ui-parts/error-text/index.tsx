@@ -2,12 +2,13 @@ import { HTMLAttributes } from 'react'
 
 export const ErrorText = function ({
   children,
+  className,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
   const classNameBase = 'text-red-500'
 
   return (
-    <div className={[props.className, classNameBase].join(' ')} {...props}>
+    <div className={[classNameBase, className].join(' ')} {...props}>
       {children}
     </div>
   )
