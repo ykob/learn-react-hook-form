@@ -1,6 +1,6 @@
-import { HTMLAttributes } from 'react'
+import { HTMLAttributes, memo } from 'react'
 
-export const ErrorText = function ({
+export const ErrorText = memo(function ({
   children,
   className,
   ...props
@@ -12,4 +12,4 @@ export const ErrorText = function ({
       {children}
     </div>
   )
-}
+})

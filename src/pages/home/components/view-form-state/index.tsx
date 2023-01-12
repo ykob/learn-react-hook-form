@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Control, useFormState } from 'react-hook-form'
 import { Inputs } from '../..'
 
@@ -5,7 +6,7 @@ type Props = {
   control: Control<Inputs>
 }
 
-export const ViewFormState = function ({ control }: Props) {
+export const ViewFormState = memo(function ({ control }: Props) {
   const { isDirty, isSubmitted, isSubmitSuccessful } = useFormState({ control })
 
   return (
@@ -16,4 +17,4 @@ export const ViewFormState = function ({ control }: Props) {
       <p>isSubmitSuccessful: {String(isSubmitSuccessful)}</p>
     </div>
   )
-}
+})
