@@ -1,8 +1,9 @@
+import { memo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { RadioButton } from '../../../../components/ui-parts'
 import { Inputs } from '../..'
 
-export const RadioItems = function () {
+export const RadioItems = memo(function () {
   const { register } = useFormContext<Inputs>()
   const data = [
     {
@@ -28,4 +29,4 @@ export const RadioItems = function () {
   ))
 
   return <>{items}</>
-}
+})

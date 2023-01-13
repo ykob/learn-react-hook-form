@@ -1,8 +1,9 @@
+import { memo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { Checkbox } from '../../../../components/ui-parts'
 import { Inputs } from '../..'
 
-export const CheckItems = function () {
+export const CheckItems = memo(function () {
   const { register } = useFormContext<Inputs>()
   const data = [
     {
@@ -28,4 +29,4 @@ export const CheckItems = function () {
   ))
 
   return <>{items}</>
-}
+})
