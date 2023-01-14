@@ -22,7 +22,7 @@ export const CheckItems = memo(function () {
       id={o.id}
       key={o.id}
       value={o.value}
-      {...register('sampleTextArray')}
+      {...register('textArray')}
     >
       {o.label}
     </Checkbox>

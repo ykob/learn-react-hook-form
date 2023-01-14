@@ -22,7 +22,7 @@ export const RadioItems = memo(function () {
       id={o.id}
       key={o.id}
       value={o.value}
-      {...register('sampleTextRadio')}
+      {...register('textSelectOnlyOne')}
     >
       {o.label}
     </RadioButton>
