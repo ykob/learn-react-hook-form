@@ -11,29 +11,29 @@ import {
 import { ButtonFilled, ErrorText, InputField } from '../../components/ui-parts'
 
 export type Inputs = {
-  sampleText: string
-  sampleNumber: number
-  sampleTextArray: string[]
-  sampleTextRadio: string
+  textRequired: string
+  textAsNumber: number
+  textArray: string[]
+  textSelectOnlyOne: string
 }
 
 const schema = z.object({
-  sampleText: z.string().min(1, { message: 'Required' }),
-  sampleNumber: z
+  textRequired: z.string().min(1, { message: 'Required' }),
+  textAsNumber: z
     .number()
     .min(1, { message: 'Input a number greater than equal to 1.' })
     .max(10, { message: 'Input a number less than equal to 10.' }),
-  sampleTextArray: z.string().array(),
-  sampleTextRadio: z.string(),
+  textArray: z.string().array(),
+  textSelectOnlyOne: z.string(),
 })
 
 export const PageHome = function () {
   const methods = useForm<Inputs>({
     defaultValues: {
-      sampleText: '',
-      sampleNumber: 1,
-      sampleTextArray: ['Check 1'],
-      sampleTextRadio: 'Radio 1',
+      textRequired: '',
+      textAsNumber: 1,
+      textArray: ['Check 1'],
+      textSelectOnlyOne: 'Radio 1',
     },
     resolver: zodResolver(schema),
   })
@@ -53,35 +53,35 @@ export const PageHome = function () {
         >
           <div>
             <InputField
-              placeholder="sample text"
-              {...methods.register('sampleText')}
+              placeholder="text required"
+              {...methods.register('textRequired')}
             />
-            {errors.sampleText?.message && (
-              <ErrorText>{errors.sampleText?.message}</ErrorText>
+            {errors.textRequired?.message && (
+              <ErrorText>{errors.textRequired?.message}</ErrorText>
             )}
           </div>
           <div>
             <InputField
-              placeholder="sample number"
+              placeholder="text as number"
               type="number"
-              {...methods.register('sampleNumber', {
+              {...methods.register('textAsNumber', {
                 setValueAs: (v) => parseInt(v),
               })}
             />
-            {errors.sampleNumber?.message && (
-              <ErrorText>{errors.sampleNumber?.message}</ErrorText>
+            {errors.textAsNumber?.message && (
+              <ErrorText>{errors.textAsNumber?.message}</ErrorText>
             )}
           </div>
           <div className="flex gap-4">
             <CheckItems />
-            {errors.sampleNumber?.message && (
-              <ErrorText>{errors.sampleTextArray?.message}</ErrorText>
+            {errors.textArray?.message && (
+              <ErrorText>{errors.textArray?.message}</ErrorText>
             )}
           </div>
           <div className="flex gap-4">
             <RadioItems />
-            {errors.sampleNumber?.message && (
-              <ErrorText>{errors.sampleTextRadio?.message}</ErrorText>
+            {errors.textSelectOnlyOne?.message && (
+              <ErrorText>{errors.textSelectOnlyOne?.message}</ErrorText>
             )}
           </div>
           <div className="flex gap-4">
