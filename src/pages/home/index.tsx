@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { MouseEventHandler } from 'react'
+import { MouseEventHandler, useState } from 'react'
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
 import {
@@ -7,6 +7,7 @@ import {
   ErrorMessageBlock,
   RadioItems,
   ViewFormState,
+  ViewSubmittedData,
 } from './components/'
 import { ButtonFilled, ErrorText, InputField } from '../../components/ui-parts'
 
@@ -38,11 +39,14 @@ export const PageHome = function () {
     resolver: zodResolver(schema),
   })
   const { errors } = methods.formState
+  const [formData, setFormData] = useState<Inputs>()
 
   const onReset: MouseEventHandler<HTMLButtonElement> = () => {
     methods.reset()
   }
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    setFormData(data)
+  }
 
   return (
     <div className="grid grid-cols-2 gap-8">
@@ -95,6 +99,7 @@ export const PageHome = function () {
       <div className="flex flex-col gap-8">
         <ErrorMessageBlock control={methods.control} />
         <ViewFormState control={methods.control} />
+        <ViewSubmittedData data={formData} />
       </div>
     </div>
   )
