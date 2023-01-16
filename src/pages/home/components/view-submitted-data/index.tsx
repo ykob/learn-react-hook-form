@@ -11,11 +11,12 @@ export const ViewSubmittedData = memo(function (props: Props) {
       <code>{JSON.stringify(props.data, null, 2)}</code>
     </pre>
   )
+  const DefaultText = () => <div>Not Submitted.</div>
 
   return (
     <div>
       <h2 className="mb-2 text-xl">Submitted Data</h2>
-      <PreformattedText />
+      {props.data ? <PreformattedText /> : <DefaultText />}
     </div>
   )
 })
