@@ -11,7 +11,7 @@ export const ViewFormState = memo(function ({ control }: Props) {
 
   return (
     <div>
-      <h2 className="mb-2 text-xl">formState</h2>
+      <h2 className="mb-2 text-xl">Form State</h2>
       <p>isDirty: {String(isDirty)}</p>
       <p>isSubmitted: {String(isSubmitted)}</p>
       <p>isSubmitSuccessful: {String(isSubmitSuccessful)}</p>
