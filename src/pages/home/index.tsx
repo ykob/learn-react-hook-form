@@ -4,6 +4,7 @@ import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
 import * as z from 'zod'
 import {
   CheckItems,
+  CheckNumberItems,
   ErrorMessageBlock,
   RadioItems,
   ViewFormState,
@@ -15,6 +16,7 @@ export type Inputs = {
   textRequired: string
   textAsNumber: number
   textArray: string[]
+  textAsNumberArray: number[]
   textSelectOnlyOne: string
 }
 
@@ -25,6 +27,7 @@ const schema = z.object({
     .min(1, { message: 'Input a number greater than equal to 1.' })
     .max(10, { message: 'Input a number less than equal to 10.' }),
   textArray: z.string().array(),
+  textAsNumberArray: z.string().array(),
   textSelectOnlyOne: z.string(),
 })
 
@@ -34,6 +37,7 @@ export const PageHome = function () {
       textRequired: '',
       textAsNumber: 1,
       textArray: ['Check 1'],
+      textAsNumberArray: [1],
       textSelectOnlyOne: 'Radio 1',
     },
     resolver: zodResolver(schema),
@@ -80,6 +84,12 @@ export const PageHome = function () {
             <CheckItems />
             {errors.textArray?.message && (
               <ErrorText>{errors.textArray?.message}</ErrorText>
+            )}
+          </div>
+          <div className="flex gap-4">
+            <CheckNumberItems />
+            {errors.textAsNumberArray?.message && (
+              <ErrorText>{errors.textAsNumberArray?.message}</ErrorText>
             )}
           </div>
           <div className="flex gap-4">
