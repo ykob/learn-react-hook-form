@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { Inputs } from '../..'
 
 type Props = {
-  data: Inputs
+  data?: Inputs
 }
 
 export const ViewSubmittedData = memo(function (props: Props) {
