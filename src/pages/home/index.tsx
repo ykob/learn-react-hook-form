@@ -14,6 +14,7 @@ import { ButtonFilled, ErrorText, InputField } from '../../components/ui-parts'
 export type Inputs = {
   textRequired: string
   textAsNumber: number
+  textAsDate: string
   textArray: string[]
   textSelectOnlyOne: string
 }
@@ -24,6 +25,10 @@ const schema = z.object({
     .number()
     .min(1, { message: 'Input a number greater than equal to 1.' })
     .max(10, { message: 'Input a number less than equal to 10.' }),
+  textAsDate: z
+    .date()
+    .min(new Date('1990-01-01'), { message: 'Too old.' })
+    .max(new Date("2100-01-01"), { message: 'Too young.' }),
   textArray: z.string().array(),
   textSelectOnlyOne: z.string(),
 })
@@ -33,6 +38,7 @@ export const PageHome = function () {
     defaultValues: {
       textRequired: '',
       textAsNumber: 1,
+      textAsDate: '',
       textArray: ['Check 1'],
       textSelectOnlyOne: 'Radio 1',
     },
@@ -74,6 +80,18 @@ export const PageHome = function () {
             />
             {errors.textAsNumber?.message && (
               <ErrorText>{errors.textAsNumber?.message}</ErrorText>
+            )}
+          </div>
+          <div>
+            <InputField
+              placeholder="text as date"
+              type="date"
+              {...methods.register('textAsDate', {
+                valueAsDate: true,
+              })}
+            />
+            {errors.textAsDate?.message && (
+              <ErrorText>{errors.textAsDate?.message}</ErrorText>
             )}
           </div>
           <div className="flex gap-4">
