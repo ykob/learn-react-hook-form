@@ -19,6 +19,7 @@ import {
 export type Inputs = {
   textRequired: string
   textAsNumber: number
+  textAsEmail: string
   textAsDate: string
   textArray: string[]
   textSelectOnlyOne: string
@@ -31,6 +32,7 @@ const schema = z.object({
     .number()
     .min(1, { message: 'Input a number greater than equal to 1.' })
     .max(10, { message: 'Input a number less than equal to 10.' }),
+  textAsEmail: z.string().email(),
   textAsDate: z
     .date()
     .min(new Date('1990-01-01'), { message: 'Too old.' })
@@ -45,6 +47,7 @@ export const PageHome = function () {
     defaultValues: {
       textRequired: '',
       textAsNumber: 1,
+      textAsEmail: 'info@tplh.net',
       textAsDate: '',
       textArray: ['Check 1'],
       textSelectOnlyOne: 'Radio 1',
@@ -88,6 +91,16 @@ export const PageHome = function () {
             />
             {errors.textAsNumber?.message && (
               <ErrorText>{errors.textAsNumber?.message}</ErrorText>
+            )}
+          </div>
+          <div>
+            <InputField
+              placeholder="text as email"
+              type="email"
+              {...methods.register('textAsEmail')}
+            />
+            {errors.textAsEmail?.message && (
+              <ErrorText>{errors.textAsEmail?.message}</ErrorText>
             )}
           </div>
           <div>
