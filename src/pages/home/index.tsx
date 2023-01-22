@@ -28,7 +28,7 @@ const schema = z.object({
   textAsDate: z
     .date()
     .min(new Date('1990-01-01'), { message: 'Too old.' })
-    .max(new Date("2100-01-01"), { message: 'Too young.' }),
+    .max(new Date('2100-01-01'), { message: 'Too young.' }),
   textArray: z.string().array(),
   textSelectOnlyOne: z.string(),
 })
