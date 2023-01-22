@@ -9,7 +9,12 @@ import {
   ViewFormState,
   ViewSubmittedData,
 } from './components/'
-import { ButtonFilled, ErrorText, InputField } from '../../components/ui-parts'
+import {
+  ButtonFilled,
+  Checkbox,
+  ErrorText,
+  InputField,
+} from '../../components/ui-parts'
 
 export type Inputs = {
   textRequired: string
@@ -17,6 +22,7 @@ export type Inputs = {
   textAsDate: string
   textArray: string[]
   textSelectOnlyOne: string
+  booleanWithCheck: boolean
 }
 
 const schema = z.object({
@@ -31,6 +37,7 @@ const schema = z.object({
     .max(new Date('2100-01-01'), { message: 'Too young.' }),
   textArray: z.string().array(),
   textSelectOnlyOne: z.string(),
+  booleanWithCheck: z.boolean(),
 })
 
 export const PageHome = function () {
@@ -41,6 +48,7 @@ export const PageHome = function () {
       textAsDate: '',
       textArray: ['Check 1'],
       textSelectOnlyOne: 'Radio 1',
+      booleanWithCheck: true,
     },
     resolver: zodResolver(schema),
   })
@@ -104,6 +112,14 @@ export const PageHome = function () {
             <RadioItems />
             {errors.textSelectOnlyOne?.message && (
               <ErrorText>{errors.textSelectOnlyOne?.message}</ErrorText>
+            )}
+          </div>
+          <div className="flex gap-4">
+            <Checkbox value="" {...methods.register('booleanWithCheck')}>
+              Boolean with Checkbox
+            </Checkbox>
+            {errors.booleanWithCheck?.message && (
+              <ErrorText>{errors.booleanWithCheck?.message}</ErrorText>
             )}
           </div>
           <div className="flex gap-4">
