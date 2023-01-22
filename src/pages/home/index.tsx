@@ -45,10 +45,10 @@ const schema = z.object({
 export const PageHome = function () {
   const methods = useForm<Inputs>({
     defaultValues: {
-      textRequired: '',
+      textRequired: 'text',
       textAsNumber: 1,
       textAsEmail: 'info@tplh.net',
-      textAsDate: '',
+      textAsDate: '2023-01-01',
       textArray: ['Check 1'],
       textSelectOnlyOne: 'Radio 1',
       booleanWithCheck: true,
