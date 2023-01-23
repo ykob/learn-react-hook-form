@@ -14,6 +14,7 @@ import {
   Checkbox,
   ErrorText,
   InputField,
+  SelectBox,
 } from '../../components/ui-parts'
 
 export type Inputs = {
@@ -24,6 +25,7 @@ export type Inputs = {
   textArray: string[]
   textSelectOnlyOne: string
   booleanWithCheck: boolean
+  textEnum: string
 }
 
 export const PageHome = function () {
@@ -36,6 +38,7 @@ export const PageHome = function () {
       textArray: ['Check 1'],
       textSelectOnlyOne: 'Radio 1',
       booleanWithCheck: true,
+      textEnum: '',
     },
     resolver: zodResolver(schema),
   })
@@ -117,6 +120,17 @@ export const PageHome = function () {
             </Checkbox>
             {errors.booleanWithCheck?.message && (
               <ErrorText>{errors.booleanWithCheck?.message}</ErrorText>
+            )}
+          </div>
+          <div className="flex gap-4">
+            <SelectBox {...methods.register('textEnum')}>
+            <option value="">Select</option>
+            <option value="1">Select 1</option>
+              <option value="2">Select 2</option>
+              <option value="3">Select 3</option>
+            </SelectBox>
+            {errors.textEnum?.message && (
+              <ErrorText>{errors.textEnum?.message}</ErrorText>
             )}
           </div>
           <div className="flex gap-4">

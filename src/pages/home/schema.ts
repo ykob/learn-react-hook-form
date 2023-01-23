@@ -14,4 +14,5 @@ export const schema = z.object({
   textArray: z.string().array(),
   textSelectOnlyOne: z.string(),
   booleanWithCheck: z.boolean(),
+  textEnum: z.string().min(1, { message: 'Required' }),
 })
