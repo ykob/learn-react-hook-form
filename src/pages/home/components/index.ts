@@ -1,5 +1,6 @@
 export { CheckItems } from './check-items'
 export { ErrorMessageBlock } from './error-message-block'
 export { RadioItems } from './radio-items'
+export { SelectTextEnum } from './select-text-enum'
 export { ViewFormState } from './view-form-state'
 export { ViewSubmittedData } from './view-submitted-data'

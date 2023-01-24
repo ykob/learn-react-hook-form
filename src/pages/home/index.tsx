@@ -5,6 +5,7 @@ import {
   CheckItems,
   ErrorMessageBlock,
   RadioItems,
+  SelectTextEnum,
   ViewFormState,
   ViewSubmittedData,
 } from './components/'
@@ -14,7 +15,6 @@ import {
   Checkbox,
   ErrorText,
   InputField,
-  SelectBox,
 } from '../../components/ui-parts'
 
 export type Inputs = {
@@ -123,12 +123,7 @@ export const PageHome = function () {
             )}
           </div>
           <div className="flex gap-4">
-            <SelectBox {...methods.register('textEnum')}>
-            <option value="">Select</option>
-            <option value="1">Select 1</option>
-              <option value="2">Select 2</option>
-              <option value="3">Select 3</option>
-            </SelectBox>
+            <SelectTextEnum />
             {errors.textEnum?.message && (
               <ErrorText>{errors.textEnum?.message}</ErrorText>
             )}
