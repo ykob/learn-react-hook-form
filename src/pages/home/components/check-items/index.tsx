@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { Checkbox } from '../../../../components/ui-parts'
 import { Inputs } from '../..'
+import { Checkbox } from '../../../../components/ui-parts'
 
 export const CheckItems = memo(function () {
   const { register } = useFormContext<Inputs>()

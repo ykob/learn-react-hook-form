@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { SelectBox } from '../../../../components/ui-parts'
 import { Inputs } from '../..'
+import { SelectBox } from '../../../../components/ui-parts'
 
 export const SelectTextEnum = memo(function () {
   const { register } = useFormContext<Inputs>()

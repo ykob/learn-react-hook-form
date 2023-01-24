@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { RadioButton } from '../../../../components/ui-parts'
 import { Inputs } from '../..'
+import { RadioButton } from '../../../../components/ui-parts'
 
 export const RadioItems = memo(function () {
   const { register } = useFormContext<Inputs>()
