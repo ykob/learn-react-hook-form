@@ -3,9 +3,9 @@ import { MouseEventHandler, useState } from 'react'
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
 import {
   CheckItems,
-  ErrorMessageBlock,
   RadioItems,
   SelectTextEnum,
+  ViewErrorMessage,
   ViewFormState,
   ViewSubmittedData,
 } from './components/'
@@ -137,7 +137,7 @@ export const PageHome = function () {
         </form>
       </FormProvider>
       <div className="flex flex-col gap-8">
-        <ErrorMessageBlock control={methods.control} />
+        <ViewErrorMessage control={methods.control} />
         <ViewFormState control={methods.control} />
         <ViewSubmittedData data={formData} />
       </div>

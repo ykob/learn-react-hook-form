@@ -1,13 +1,13 @@
 import { Control, useFormState } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { Inputs } from '../..'
-import { ErrorText } from '../../../../components/ui-parts/'
+import { ErrorText } from '../../../../components/ui-parts'
 
 type Props = {
   control: Control<Inputs>
 }
 
-export const ErrorMessageBlock = function ({ control }: Props) {
+export const ViewErrorMessage = function ({ control }: Props) {
   const { errors, isValid } = useFormState({ control })
 
   const ErrorMessages = function () {
