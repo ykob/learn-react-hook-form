@@ -1,5 +1,11 @@
 import * as z from 'zod'
 
+enum Fruits {
+  Apple = 1,
+  Banana = 2,
+  Cantaloupe = 3,
+}
+
 export const schema = z.object({
   textRequired: z.string().min(1, { message: 'Required' }),
   textAsNumber: z
@@ -14,5 +20,5 @@ export const schema = z.object({
   textArray: z.string().array(),
   textSelectOnlyOne: z.string(),
   booleanWithCheck: z.boolean(),
-  textEnum: z.string().min(1, { message: 'Required' }),
+  textEnum: z.nativeEnum(Fruits),
 })
