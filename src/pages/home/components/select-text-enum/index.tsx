@@ -24,7 +24,7 @@ export const SelectTextEnum = memo(function () {
     },
   ]
   const items = data.map((o) => (
-    <option id={o.id} key={o.id} value={o.value} {...register('textArray')}>
+    <option id={o.id} key={o.id} value={o.value}>
       {o.label}
     </option>
   ))
