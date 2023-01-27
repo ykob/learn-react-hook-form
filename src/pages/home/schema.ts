@@ -1,10 +1,5 @@
 import * as z from 'zod'
-
-enum Fruits {
-  Apple = 1,
-  Banana = 2,
-  Cantaloupe = 3,
-}
+import { Fruits } from '../../configs/enum'
 
 export const schema = z.object({
   textRequired: z.string().min(1, { message: 'Required' }),

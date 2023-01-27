@@ -28,12 +28,6 @@ export type Inputs = {
   textEnum: string
 }
 
-export enum Fruits {
-  Apple = 1,
-  Banana = 2,
-  Cantaloupe = 3,
-}
-
 export const PageHome = function () {
   const methods = useForm<Inputs>({
     defaultValues: {
