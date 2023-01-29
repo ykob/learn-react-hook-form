@@ -10,7 +10,7 @@ type Props = {
   children?: ReactNode
   id?: string
   name: string
-  value: string
+  value: string | number
   onBlur?: FocusEventHandler<HTMLInputElement>
   onChange?: ChangeEventHandler<HTMLInputElement>
 }
