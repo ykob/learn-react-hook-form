@@ -21,6 +21,7 @@ export type Inputs = {
   textRequired: string
   textAsNumber: number
   textAsEmail: string
+  textAsUrl: string
   textAsDate: string
   textArray: string[]
   textSelectOnlyOne: string
@@ -34,6 +35,7 @@ export const PageHome = function () {
       textRequired: 'text',
       textAsNumber: 1,
       textAsEmail: 'info@tplh.net',
+      textAsUrl: 'https://www.tplh.net/',
       textAsDate: '2023-01-01',
       textArray: ['Check 1'],
       textSelectOnlyOne: 'Radio 1',
@@ -88,6 +90,16 @@ export const PageHome = function () {
             />
             {errors.textAsEmail?.message && (
               <ErrorText>{errors.textAsEmail?.message}</ErrorText>
+            )}
+          </div>
+          <div>
+            <InputField
+              placeholder="text as url"
+              type="url"
+              {...methods.register('textAsUrl')}
+            />
+            {errors.textAsUrl?.message && (
+              <ErrorText>{errors.textAsUrl?.message}</ErrorText>
             )}
           </div>
           <div>
