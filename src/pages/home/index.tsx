@@ -50,6 +50,9 @@ export const PageHome = function () {
   const onReset: MouseEventHandler<HTMLButtonElement> = () => {
     methods.reset()
   }
+  const onValidate: MouseEventHandler<HTMLButtonElement> = () => {
+    methods.trigger()
+  }
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     setFormData(data)
   }
@@ -143,6 +146,9 @@ export const PageHome = function () {
           <div className="flex gap-4">
             <ButtonFilled type="button" onClick={onReset}>
               Reset
+            </ButtonFilled>
+            <ButtonFilled type="button" onClick={onValidate}>
+              Validate
             </ButtonFilled>
             <ButtonFilled>Submit</ButtonFilled>
           </div>
